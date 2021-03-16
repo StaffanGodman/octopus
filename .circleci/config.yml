@@ -19,4 +19,4 @@ jobs:
           command: npm run build
       - run:
           name: Deploy Netlify
-          command: npx netlify deploy --prod --dir=build
+          command: npx netlify deploy --prod --dir=dist
