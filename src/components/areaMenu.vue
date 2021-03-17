@@ -1,11 +1,15 @@
 <template>
   <div>
-    <img alt="Traffic sign" src="../assets/skylt.png" />
+    <h1>Trafikinytt från p4</h1>
     <br />
     <p v-if="trafficMessages.length === 0">
-      Välj din region och få ut trafikinformation om området.<br />
-      Väljer du alla får du ut de 10 senaste trafikmedelandena
+      information om trafikstörningar runt om i landet
     </p>
+    <img
+      alt="Traffic sign"
+      src="../assets/skylt.png"
+      v-if="trafficMessages.length === 0"
+    />
     <select name="Region" id="Regions" @change="getTrafficMessages">
       <option value="placeholder">Select an area</option>
       <option value="all">Alla områden</option>
@@ -15,6 +19,8 @@
     </select>
     <div>
       <p v-for="message in trafficMessages" :key="message">
+        {{ message.title }}
+        {{ message.subcategory }}<br />
         {{ message.description }}
       </p>
       <br />
