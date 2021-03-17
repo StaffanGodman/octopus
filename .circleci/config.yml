@@ -11,9 +11,7 @@ workflows:
 
 jobs:
   tests:
-    executor:
-      name: node/default
-      tag: '14.16'
+    executor: node/default
     steps:
       - checkout
       - node/install
