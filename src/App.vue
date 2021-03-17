@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <area-menu />
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import AreaMenu from "./components/areaMenu.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    AreaMenu
   }
 };
 </script>
