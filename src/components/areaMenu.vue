@@ -35,7 +35,7 @@ export default {
     async getTrafficAreas() {
       try {
         let resp = await fetch(
-          "http://api.sr.se/api/v2/traffic/areas?format=json&pagination=false"
+          "https://api.sr.se/api/v2/traffic/areas?format=json&pagination=false"
         );
         if (!resp.ok) {
           throw new Error(resp.status);
