@@ -10,6 +10,7 @@
       src="../assets/skylt.png"
       v-if="trafficMessages.length === 0"
     />
+    <br />
     <select name="Region" id="Regions" @change="getTrafficMessages">
       <option value="placeholder">Select an area</option>
       <option value="all">Alla områden</option>
