@@ -1,6 +1,7 @@
 <template>
   <div>
     <img alt="Traffic sign" src="../assets/skylt.png" />
+    <br />
     <p v-if="trafficMessages.length === 0">
       Välj din region och få ut trafikinformation om området.<br />
       Väljer du alla får du ut de 10 senaste trafikmedelandena
@@ -12,7 +13,7 @@
         {{ area.name }}
       </option>
     </select>
-    <div id="center">
+    <div>
       <p v-for="message in trafficMessages" :key="message">
         {{ message.description }}
       </p>
@@ -85,7 +86,7 @@ export default {
 
 <style scoped>
 img {
-  width: 75%;
+  width: 20rem;
 }
 p {
   border: solid lightblue;
