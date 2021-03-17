@@ -4,11 +4,22 @@ orbs:
 workflows:
   test-and-deploy:
     jobs:
-      - node/test
+      - tests
       - build-and-deploy:
           requires:
-            - node/test
+            - tests
+
 jobs:
+  tests:
+    executor: node/default
+    steps:
+      - checkout
+      - run:
+          name: UnitTest
+          command: npm run test:unit
+      - run:
+          name: E2e
+          command: npm run test:e2e
   build-and-deploy:
     executor: node/default
     steps:
