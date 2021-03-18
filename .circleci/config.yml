@@ -1,26 +1,14 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.2.0
+  node: circleci/node@3.0.0
 workflows:
   test-and-deploy:
     jobs:
-      - tests
+      - node/test
       - build-and-deploy:
           requires:
-            - tests
-
+            - node/test
 jobs:
-  tests:
-    executor: node/default
-    steps:
-      - checkout
-      - node/install
-      - run:
-          name: UnitTest
-          command: npm run test:unit
-      - run:
-          name: E2e
-          command: npm run test:e2e
   build-and-deploy:
     executor: node/default
     steps:
