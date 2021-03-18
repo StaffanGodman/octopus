@@ -1,17 +1,10 @@
 <template>
-  <area-menu />
+  <div id="nav">
+    <router-link to="/">Home</router-link> | <router-link to="/areaMenu">Trafikinytt</router-link> |
+    <router-link to="/about">Om oss</router-link> |
+  </div>
+  <router-view />
 </template>
-
-<script>
-import AreaMenu from "./components/areaMenu.vue";
-
-export default {
-  name: "App",
-  components: {
-    AreaMenu
-  }
-};
-</script>
 
 <style>
 #app {

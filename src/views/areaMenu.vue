@@ -5,11 +5,7 @@
     <p v-if="trafficMessages.length === 0">
       information om trafikstörningar runt om i landet
     </p>
-    <img
-      alt="Traffic sign"
-      src="../assets/skylt.png"
-      v-if="trafficMessages.length === 0"
-    />
+    <img alt="Traffic sign" src="../assets/skylt.png" v-if="trafficMessages.length === 0" />
     <br />
     <select name="Region" id="Regions" @change="getTrafficMessages">
       <option value="placeholder">Select an area</option>
@@ -35,37 +31,33 @@ export default {
     return {
       trafficAreas: [],
       trafficMessages: [],
-    };
+    }
   },
 
   methods: {
     async getTrafficAreas() {
       try {
-        let resp = await fetch(
-          "https://api.sr.se/api/v2/traffic/areas?format=json&pagination=false"
-        );
+        let resp = await fetch("https://api.sr.se/api/v2/traffic/areas?format=json&pagination=false")
         if (!resp.ok) {
-          throw new Error(resp.status);
+          throw new Error(resp.status)
         }
-        let json = await resp.json();
-        this.trafficAreas = json.areas;
+        let json = await resp.json()
+        this.trafficAreas = json.areas
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
     },
     async getTrafficMessages(event) {
       if (event.target.value === "all") {
         try {
-          let resp = await fetch(
-            "https://api.sr.se/api/v2/traffic/messages?format=json"
-          );
+          let resp = await fetch("https://api.sr.se/api/v2/traffic/messages?format=json")
           if (!resp.ok) {
-            throw new Error(resp.status);
+            throw new Error(resp.status)
           }
-          let json = await resp.json();
-          this.trafficMessages = json.messages;
+          let json = await resp.json()
+          this.trafficMessages = json.messages
         } catch (error) {
-          console.error(error);
+          console.error(error)
         }
       } else {
         try {
@@ -73,22 +65,22 @@ export default {
             "https://api.sr.se/api/v2/traffic/messages?trafficareaname=" +
               event.target.value +
               "&format=json&pagination=false"
-          );
+          )
           if (!resp.ok) {
-            throw new Error(resp.status);
+            throw new Error(resp.status)
           }
-          let json = await resp.json();
-          this.trafficMessages = json.messages;
+          let json = await resp.json()
+          this.trafficMessages = json.messages
         } catch (error) {
-          console.error(error);
+          console.error(error)
         }
       }
     },
   },
   created() {
-    this.getTrafficAreas();
+    this.getTrafficAreas()
   },
-};
+}
 </script>
 
 <style scoped>
