@@ -3,6 +3,6 @@
 describe("My First Test", () => {
   it("Visits trafikinformation", () => {
     cy.visit("/areaMenu");
-    cy.contains("h1", "Trafikinytt från p4");
+    //cy.contains("h1", "Trafikinytt från p4");
   });
 });
