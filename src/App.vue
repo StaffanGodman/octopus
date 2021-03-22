@@ -1,10 +1,21 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> | <router-link to="/areaMenu">Trafikinytt</router-link> |
-    <router-link to="/songMenu">Låt-Toppen</router-link> | <router-link to="/about">Om oss</router-link> |
-  </div>
+  <div id="nav"><Header /></div>
   <router-view />
+  <Footer />
 </template>
+
+<script>
+import Header from "./components/header.vue"
+import Footer from "./components/myfooter.vue"
+
+export default {
+  name: "app",
+  components: {
+    Header,
+    Footer,
+  },
+}
+</script>
 
 <style>
 #app {
@@ -13,6 +24,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

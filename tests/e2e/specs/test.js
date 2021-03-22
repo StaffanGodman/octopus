@@ -1,8 +1,8 @@
 // https://docs.cypress.io/api/introduction/api.html
 
 describe("My First Test", () => {
-  it("Visits trafikinformation", () => {
-    cy.visit("/areaMenu");
-    //cy.contains("h1", "Trafikinytt från p4");
+  it("Visits the app root url", () => {
+    cy.visit("/");
+    cy.contains("h1", "Welcome to Your Vue.js App");
   });
 });
