@@ -1,22 +1,15 @@
 version: 2.1
 orbs:
-  node: circleci/node@4.2.0
+  node: circleci/node@3.0.0
 workflows:
   test-and-deploy:
     jobs:
-      - do-testing
+      - node/test
       - build-and-deploy:
           requires:
-            - do-testing
+            - node/test
 jobs:
-  do-testing:
-    docker:
-      - image: 'cimg/node:15.11.0-browsers'
-    steps:
-      - checkout
-      - node/install-packages
-      - run: "npm run test:unit"
-#      - run: "npm run test:e2e-headless"
+
   build-and-deploy:
     executor: node/default
     steps:
