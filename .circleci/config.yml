@@ -16,7 +16,7 @@ jobs:
       - checkout
       - node/install-packages
       - run: "npm run test:unit"
-      - run: "npm run test:e2e-headless"
+#      - run: "npm run test:e2e-headless"
   build-and-deploy:
     executor: node/default
     steps:
