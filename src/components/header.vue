@@ -6,6 +6,7 @@
       <ul class="menu">
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/areaMenu">Trafikinytt</router-link></li>
+        <li><router-link to="/songMenu">Låt-Toppen</router-link></li>
         <li><router-link to="/about">Om oss</router-link></li>
       </ul>
     </header>
