@@ -1,8 +1,7 @@
 <template>
   <div>
     <h1>Trafikinytt från p4</h1>
-    <br />
-    <p v-if="trafficMessages.length === 0">
+    <p id="information" v-if="trafficMessages.length === 0">
       information om trafikstörningar runt om i landet
     </p>
     <img alt="Traffic sign" src="../assets/skylt.png" v-if="trafficMessages.length === 0" />
@@ -61,10 +60,20 @@ img {
   margin: 0rem;
 }
 .messagespace {
+  height: 25rem;
   display: flex;
   flex-direction: column;
   border: solid 1px rgb(185, 167, 167);
   margin: 2rem;
+  overflow: scroll;
+}
+#information {
+  margin: 2rem;
+  height: 2rem;
+  border: solid lightblue;
+  background-color: aliceblue;
+  padding: 1rem;
+  margin: 0rem;
 }
 #title {
   color: red;
