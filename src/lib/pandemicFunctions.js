@@ -36,8 +36,8 @@ const pandemicFunctions = {
       console.error(error)
     }
   },
-  parseEpisodes(sickness) {
-    episodes = sickness
+  async parseEpisodes(sickness) {
+    await 
   },
   keyWords(corona, pandemi) {
     this.corona = corona
