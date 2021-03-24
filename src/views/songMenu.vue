@@ -5,8 +5,8 @@
 
     <select name="Kanal" id="Channels" @change="getSongList">
       <option value="placeholder">Välj kanal</option>
-      <option v-for="channel in channels" :key="channel.id">
-        {{ channel.id }}
+      <option v-for="channel in channels"  :key="channel.name" v-bind:value="channel.id">
+        {{ channel.name }}
       </option>
     </select>
     <div>
@@ -42,6 +42,7 @@ export default {
     },
     async getSongList(event) {
       try {
+        console.log("value:"+event.target.value)
         let resp = await fetch(
           "https://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=" +
             event.target.value +
