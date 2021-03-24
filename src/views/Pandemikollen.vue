@@ -4,7 +4,7 @@
     <!-- <p id="information" v-if="trafficMessages.length === 0">information om rapporteringen kring coronapandemins utveckling</p>
     <img alt="Traffic sign" src="../assets/skylt.png" v-if="trafficMessages.length === 0" /> -->
     <br />
-    <select name="Programs" id="Regions" @change="getEpisodes">
+    <select name="Programs" id="Regions" @change="setProgram">
       <option value="placeholder">Välj ett program</option>
       <option v-for="program in newsPrograms" :value="program.id" :key="program.id">
         {{ program.name }}
@@ -18,7 +18,7 @@
       </option>
     </select>
     <br><br>
-    <button class="submitbutton" @click="parseEpisodes(sicknessOfChoice)">Hämta data :)</button>
+    <button class="submitbutton" @click="parseEpisodes">Hämta data :)</button>
   </div>
 </template>
 
@@ -42,14 +42,17 @@ export default {
         pandemicFunctions.fetchEpisodes(event)
       }
     },
+    setProgram(event) {
+      this.programChoice = event.target.value
+    },
     setSickness(event) {
       this.sicknessOfChoice = event.target.value
     },
-    parseEpisodes(sickness) {
-      if (sickness === null) {
+    parseEpisodes() {
+      if (this.sicknessOfChoice === null || this.programChoice === null) {
         return
       } else {
-        pandemicFunctions.parseEpisodes(sickness)
+        pandemicFunctions.parseEpisodes(this.sicknessOfChoice, this.programChoice)
       }
     }
   },

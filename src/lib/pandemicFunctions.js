@@ -1,5 +1,4 @@
 let newsPrograms = []
-let episodes = []
 let keywords = ["corona", "pandemi"]
 
 
@@ -22,22 +21,25 @@ const pandemicFunctions = {
       console.error(error)
     }
   },
-  async fetchEpisodes(event) {
+  async fetchEpisodes(program) {
     try {
       let resp = await fetch(
-        "http://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&programid="+event.target.value)
+        "http://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&programid=" + program
+      )
         if (!resp.ok) {
         throw new Error(resp.status)
         }
         let json = await resp.json()
-          episodes = json.episodes
+          return json.episodes
           
     } catch (error) {
       console.error(error)
     }
   },
-  async parseEpisodes(sickness) {
-    await 
+  async parseEpisodes(sickness, program) {
+    let episodes = await this.fetchEpisodes(program)
+    console.log(episodes)
+    console.log(sickness)
   },
   keyWords(corona, pandemi) {
     this.corona = corona
