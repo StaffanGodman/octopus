@@ -14,6 +14,7 @@ jobs:
       - image: 'cimg/node:15.11.0-browsers'
     steps:
       - checkout
+      - run: "npm cache clean --force"
       - node/install-packages
       - run: "npm run test:unit"
 #      - run: "npm run test:e2e-headless"
