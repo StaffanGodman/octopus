@@ -1,13 +1,4 @@
-let trafficAreas = []
-let trafficMessages = []
-
 const trafficFunctions = {
-  async getAreas() {
-    return trafficAreas
-  },
-  async getTrafficMessages() {
-    return trafficMessages
-  },
   async fetchTrafficAreas() {
     try {
       let resp = await fetch("https://api.sr.se/api/v2/traffic/areas?format=json&pagination=false")
@@ -15,7 +6,8 @@ const trafficFunctions = {
         throw new Error(resp.status)
       }
       let json = await resp.json()
-      trafficAreas = json.areas
+
+      return json.areas
     } catch (error) {
       console.error(error)
     }
@@ -29,7 +21,7 @@ const trafficFunctions = {
           throw new Error(resp.status)
         }
         let json = await resp.json()
-        trafficMessages = json.messages
+        return json.messages
       } catch (error) {
         console.error(error)
       }
@@ -44,7 +36,7 @@ const trafficFunctions = {
           throw new Error(resp.status)
         }
         let json = await resp.json()
-        trafficMessages = json.messages
+        return json.messages
       } catch (error) {
         console.error(error)
       }
