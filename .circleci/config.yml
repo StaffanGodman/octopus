@@ -13,9 +13,9 @@ jobs:
     docker:
       - image: 'cimg/node:15.11.0-browsers'
     steps:
+      - run: "npm cache clean --force"
       - checkout
       - node/install-packages
-      - run: "npm cache clean --force"
       - run: "npm run test:unit"
 #      - run: "npm run test:e2e-headless"
   build-and-deploy:
