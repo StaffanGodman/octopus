@@ -11,12 +11,14 @@
       </option>
     </select>
     <br /><br />
-    <p>{{ keywords }}</p>
-    <select name="pandemicWords" @change="printKW">
+    <p>{{ sicknessOfChoice }}</p>
+    <select name="pandemicWords" @change="setSickness">
       <option v-for="word in keywords" :key="word">
         {{ word }}
       </option>
     </select>
+    <br><br>
+    <button class="submitbutton" @click="parseEpisodes(sicknessOfChoice)">Hämta data :)</button>
   </div>
 </template>
 
@@ -28,9 +30,8 @@ export default {
     return {
       programChoice: null,
       newsPrograms: [],
-      trafficAreas: [],
       keywords: [],
-      wordFrequency: null,
+      sicknessOfChoice: null,
     }
   },
   methods: {
@@ -38,13 +39,19 @@ export default {
       if (event.target.value === "placeholder") {
         return
       } else {
-        pandemicFunctions.parseEpisodes(pandemicFunctions.fetchEpisodes(event))
+        pandemicFunctions.fetchEpisodes(event)
       }
     },
-    async getdfg(event) {
-      await pandemicFunctions.fetchTrafficMessages(event)
-      this.newsPrograms = await pandemicFunctions.getNewsPrograms()
+    setSickness(event) {
+      this.sicknessOfChoice = event.target.value
     },
+    parseEpisodes(sickness) {
+      if (sickness === null) {
+        return
+      } else {
+        pandemicFunctions.parseEpisodes(sickness)
+      }
+    }
   },
   async created() {
     await pandemicFunctions.fetchNewsPrograms()

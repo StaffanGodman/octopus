@@ -1,5 +1,5 @@
 let newsPrograms = []
-let trafficMessages = []
+let episodes = []
 let keywords = ["corona", "pandemi"]
 
 
@@ -9,9 +9,6 @@ const pandemicFunctions = {
   },
   async getNewsPrograms() {
     return newsPrograms
-  },
-  async getTrafficMessages() {
-      return trafficMessages
   },
   async fetchNewsPrograms() {
     try {
@@ -33,20 +30,15 @@ const pandemicFunctions = {
         throw new Error(resp.status)
         }
         let json = await resp.json()
-          return json.episodes
+          episodes = json.episodes
           
     } catch (error) {
       console.error(error)
     }
   },
-  /*
-  parseEpisodes(episodesInput) {
-    let pandemicInfo = new this.keyWords(0, 0)
-    let episodes = []
-    episodes = episodesInput
-   
+  parseEpisodes(sickness) {
+    episodes = sickness
   },
-  */
   keyWords(corona, pandemi) {
     this.corona = corona
     this.pandemi = pandemi
