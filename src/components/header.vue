@@ -5,7 +5,8 @@
       <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
       <ul class="menu">
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/areaMenu">Trafikinytt</router-link></li>
+        <li><router-link to="/areaMenu">Trafiknytt</router-link></li>
+        <li><router-link to="/pandemikollen">Pandemikollen</router-link></li>
         <li><router-link to="/about">Om oss</router-link></li>
       </ul>
     </header>
