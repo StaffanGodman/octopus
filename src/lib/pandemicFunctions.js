@@ -1,5 +1,5 @@
 let newsPrograms = []
-let keywords = ["corona", "pandemi"]
+let keywords = [{name:"corona", count:0}, {name:"pandemi", count:0}]
 
 
 const pandemicFunctions = {
@@ -24,7 +24,7 @@ const pandemicFunctions = {
   async fetchEpisodes(program) {
     try {
       let resp = await fetch(
-        "http://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&programid=" + program
+        "http://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&pagination=true&programid=" + program
       )
         if (!resp.ok) {
         throw new Error(resp.status)
@@ -38,13 +38,25 @@ const pandemicFunctions = {
   },
   async parseEpisodes(sickness, program) {
     let episodes = await this.fetchEpisodes(program)
-    console.log(episodes)
-    console.log(sickness)
+    let sickString = String(sickness)
+    for (const episode of episodes) {
+      let startDate = Date(episode.publishdateutc)
+      console.log(startDate)
+      let description = String(episode.description)      
+      if (description.toLowerCase().includes(sickString)) {
+        for (const sickness of keywords) {
+          if (sickness.name === sickString) {
+            sickness.count ++
+          }
+        }
+      }
+    }
   },
-  keyWords(corona, pandemi) {
-    this.corona = corona
-    this.pandemi = pandemi
-  },
+  sicknessObject(name, startDate) {
+    this.name = name
+    this.startDate = startDate
+    this.count = 0
+  }
 }
 
 export default pandemicFunctions

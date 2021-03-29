@@ -1,24 +1,29 @@
 <template>
   <div>
     <h1>Pandemikollen</h1>
-    <!-- <p id="information" v-if="trafficMessages.length === 0">information om rapporteringen kring coronapandemins utveckling</p>
-    <img alt="Traffic sign" src="../assets/skylt.png" v-if="trafficMessages.length === 0" /> -->
     <br />
-    <select name="Programs" id="Regions" @change="setProgram">
-      <option value="placeholder">Välj ett program</option>
-      <option v-for="program in newsPrograms" :value="program.id" :key="program.id">
-        {{ program.name }}
-      </option>
-    </select>
-    <br /><br />
-    <p>{{ sicknessOfChoice }}</p>
-    <select name="pandemicWords" @change="setSickness">
-      <option v-for="word in keywords" :key="word">
-        {{ word }}
-      </option>
-    </select>
-    <br><br>
-    <button class="submitbutton" @click="parseEpisodes">Hämta data :)</button>
+    <div v-if="!showResults">
+      <select name="Programs" id="Regions" @change="setProgram">
+        <option value="placeholder">Välj ett program</option>
+        <option v-for="program in newsPrograms" :value="program.id" :key="program.id">
+          {{ program.name }}
+        </option>
+      </select>
+      <br /><br />
+      <p>{{ sicknessOfChoice }}</p>
+      <select name="pandemicWords" @change="setSickness">
+        <option v-for="word in choiceWords" :key="word" :value="word">
+          {{ word }}
+        </option>
+      </select>
+      <br /><br />
+      <button class="submitbutton" @click="parseEpisodes">Hämta data :)</button>
+    </div>
+    <div v-if="showResults">
+      <p v-for="word in keywords" :key="word.name">{{ word.name }} : {{ word.count }}</p>
+      <br />
+      <button class="submitbutton" @click="newSearch">Ny sökning</button>
+    </div>
   </div>
 </template>
 
@@ -32,9 +37,15 @@ export default {
       newsPrograms: [],
       keywords: [],
       sicknessOfChoice: null,
+      showResults: false,
+      choiceWords: ["corona", "pandemi", "vaccin"]
     }
   },
   methods: {
+    newSearch() {
+      this.keywords = null
+      this.showResults = false
+    },
     async getEpisodes(event) {
       if (event.target.value === "placeholder") {
         return
@@ -48,19 +59,22 @@ export default {
     setSickness(event) {
       this.sicknessOfChoice = event.target.value
     },
-    parseEpisodes() {
+    async getKeywords() {
+      this.keywords = await pandemicFunctions.getKeywords()
+    },
+    async parseEpisodes() {
       if (this.sicknessOfChoice === null || this.programChoice === null) {
         return
       } else {
-        pandemicFunctions.parseEpisodes(this.sicknessOfChoice, this.programChoice)
+        await pandemicFunctions.parseEpisodes(this.sicknessOfChoice, this.programChoice)
+        await this.getKeywords()
+        this.showResults = true
       }
-    }
+    },
   },
   async created() {
     await pandemicFunctions.fetchNewsPrograms()
     this.newsPrograms = await pandemicFunctions.getNewsPrograms()
-    this.keywords = await pandemicFunctions.getKeywords()
-    console.log(this.keywords)
   },
 }
 </script>
