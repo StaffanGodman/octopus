@@ -7,6 +7,7 @@
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/areaMenu">Trafiknytt</router-link></li>
         <li><router-link to="/pandemikollen">Pandemikollen</router-link></li>
+        <li><router-link to="/songMenu">Låttoppen</router-link></li>
         <li><router-link to="/about">Om oss</router-link></li>
       </ul>
     </header>

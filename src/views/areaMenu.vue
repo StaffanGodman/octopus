@@ -19,7 +19,7 @@
         <p id="category">{{ message.subcategory }}</p>
         <br />
         <p id="description">{{ message.description }}</p>
-        <p id="description">{{ message.createddate }}</p>
+        <p id="date">{{ formatDate(message.createddate) }}</p>
       </div>
       <br />
     </div>
@@ -38,13 +38,15 @@ export default {
   },
   methods: {
     async getTrafficMessages(event) {
-      await trafficFunctions.fetchTrafficMessages(event)
-      this.trafficMessages = await trafficFunctions.getTrafficMessages()
+      this.trafficMessages = await trafficFunctions.fetchTrafficMessages(event)
+      this.trafficMessages = this.trafficMessages.reverse()
+    },
+    formatDate(dateString) {
+      return new Date(Number(JSON.stringify(dateString).slice(7, -8))).toLocaleString()
     },
   },
   async created() {
-    await trafficFunctions.fetchTrafficAreas()
-    this.trafficAreas = await trafficFunctions.getAreas()
+    this.trafficAreas = await trafficFunctions.fetchTrafficAreas()
   },
 }
 </script>
@@ -52,6 +54,11 @@ export default {
 <style>
 img {
   width: 20rem;
+}
+#Regions {
+  width: 15rem;
+  height: 2rem;
+  font-size: large;
 }
 .message {
   border: solid lightblue;
@@ -92,5 +99,10 @@ img {
 #desctription {
   float: left;
   margin: 0.5rem;
+}
+#date {
+  float: left;
+  bottom: 0%;
+  font-size: small;
 }
 </style>

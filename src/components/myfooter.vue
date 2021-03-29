@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "footer",
+  name: "Footer",
 }
 </script>
 
@@ -23,7 +23,7 @@ export default {
 }
 
 .homebutton {
-  float: left;
+  float: right;
   background-image: url("../assets/homeicon.png");
   background-size: cover;
   height: 2.5rem;
@@ -31,7 +31,7 @@ export default {
   margin: 0.3rem;
 }
 .backbutton {
-  float: right;
+  float: left;
   background-image: url("../assets/backarrow.png");
   background-size: cover;
   height: 2.5rem;
