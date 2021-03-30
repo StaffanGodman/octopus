@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="btn d-none d-lg-inline color-primary-2" href="$router.push('/')">Hem</a>
+      <a class="btn d-none d-lg-inline color-primary-2" @click="$router.push('/')">Hem</a>
       <button
         class="navbar-toggler"
         type="button"
