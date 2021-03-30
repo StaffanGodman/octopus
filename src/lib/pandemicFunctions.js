@@ -1,5 +1,6 @@
 let newsPrograms = []
 let keywords = [{name:"corona", count:0}, {name:"pandemi", count:0}]
+let sicknessObjectList = []
 
 
 const pandemicFunctions = {
@@ -36,12 +37,18 @@ const pandemicFunctions = {
       console.error(error)
     }
   },
+  formatDate(dateString) {
+    return Number(JSON.stringify(dateString).slice(7, -3))
+  },
   async parseEpisodes(sickness, program) {
     let episodes = await this.fetchEpisodes(program)
     let sickString = String(sickness)
+    let sicknessObject = null
     for (const episode of episodes) {
-      let startDate = Date(episode.publishdateutc)
+      let startDate = this.formatDate(episode.publishdateutc)
       console.log(startDate)
+      startDate+=7
+      console.log("med ändring"+startDate)
       let description = String(episode.description)      
       if (description.toLowerCase().includes(sickString)) {
         for (const sickness of keywords) {
