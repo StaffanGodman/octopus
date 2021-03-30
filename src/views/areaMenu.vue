@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <h1>Trafikinytt från p4</h1>
-    <p id="information" v-if="trafficMessages.length === 0">
-      information om trafikstörningar runt om i landet
-    </p>
-    <img alt="Traffic sign" src="../assets/skylt.png" v-if="trafficMessages.length === 0" />
+  <div class="color-background vh-100 container-fluid">
+    <h1 class="color-primary-3 fs-1 p-3">Trafikinytt</h1>
+    <div class="color-primary-1 text-center">
+      <p id="information" v-if="trafficMessages.length === 0">
+        Håll koll på vad som händer i trafiken. Välj region nedan för att få uppdateringar och information om
+        trafikstörningar i närheten.
+      </p>
+    </div>
     <br />
     <select name="Region" id="Regions" @change="getTrafficMessages">
       <option value="placeholder">Select an area</option>
@@ -73,14 +75,6 @@ img {
   border: solid 1px rgb(185, 167, 167);
   margin: 2rem;
   overflow: scroll;
-}
-#information {
-  margin: 2rem;
-  height: 2rem;
-  border: solid lightblue;
-  background-color: aliceblue;
-  padding: 1rem;
-  margin: 0rem;
 }
 #title {
   color: red;
