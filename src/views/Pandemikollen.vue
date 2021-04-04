@@ -20,7 +20,7 @@
       <button class="submitbutton" @click="parseEpisodes">Hämta data :)</button>
     </div>
     <div v-if="showResults">
-      <p v-for="word in keywords" :key="word.name">{{ word.name }} : {{ word.count }}</p>
+      <LineChart />
       <br />
       <button class="submitbutton" @click="newSearch">Ny sökning</button>
     </div>
@@ -29,8 +29,13 @@
 
 <script>
 import pandemicFunctions from "../lib/pandemicFunctions.js"
+import LineChart from "../components/linechart.vue"
+
 
 export default {
+  components: {
+    LineChart,
+  },
   data() {
     return {
       programChoice: null,
@@ -38,7 +43,7 @@ export default {
       keywords: [],
       sicknessOfChoice: null,
       showResults: false,
-      choiceWords: ["corona", "pandemi", "vaccin"]
+      choiceWords: ["corona", "pandemi", "vaccin"],
     }
   },
   methods: {
@@ -67,7 +72,7 @@ export default {
         return
       } else {
         await pandemicFunctions.parseEpisodes(this.sicknessOfChoice, this.programChoice)
-        await this.getKeywords()
+        this.getKeywords
         this.showResults = true
       }
     },

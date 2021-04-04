@@ -1,11 +1,12 @@
 let newsPrograms = []
-let keywords = [{name:"corona", count:0}, {name:"pandemi", count:0}]
+//let keywords = [{ name: "corona", count: 0 }, { name: "pandemi", count: 0 }]
+const WEEK_IN_MILLISECONDS = 604800000
 let sicknessObjectList = []
 
 
 const pandemicFunctions = {
   async getKeywords() {
-    return keywords
+    return sicknessObjectList
   },
   async getNewsPrograms() {
     return newsPrograms
@@ -17,7 +18,7 @@ const pandemicFunctions = {
         throw new Error(resp.status)
       }
       let json = await resp.json()
-        newsPrograms  = json.programs
+      newsPrograms = json.programs
     } catch (error) {
       console.error(error)
     }
@@ -25,45 +26,49 @@ const pandemicFunctions = {
   async fetchEpisodes(program) {
     try {
       let resp = await fetch(
-        "http://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&pagination=true&programid=" + program
+        "http://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&pagination=false&programid=" + program
       )
-        if (!resp.ok) {
+      if (!resp.ok) {
         throw new Error(resp.status)
-        }
-        let json = await resp.json()
-          return json.episodes
-          
+      }
+      let json = await resp.json()
+      return json.episodes
+
     } catch (error) {
       console.error(error)
     }
   },
-  formatDate(dateString) {
+  formatDateMilliseconds(dateString) {
     return Number(JSON.stringify(dateString).slice(7, -3))
   },
   async parseEpisodes(sickness, program) {
     let episodes = await this.fetchEpisodes(program)
+    episodes = episodes.reverse()
     let sickString = String(sickness)
+    let controllDate = this.formatDateMilliseconds(episodes[0].publishdateutc)
     let sicknessObject = null
+    console.log(controllDate)
     for (const episode of episodes) {
-      let startDate = this.formatDate(episode.publishdateutc)
-      console.log(startDate)
-      startDate+=7
-      console.log("med ändring"+startDate)
-      let description = String(episode.description)      
-      if (description.toLowerCase().includes(sickString)) {
-        for (const sickness of keywords) {
-          if (sickness.name === sickString) {
-            sickness.count ++
-          }
+      let description = String(episode.description)
+      let startDate = this.formatDateMilliseconds(episode.publishdateutc)
+      if (sicknessObjectList.length === 0 || startDate - controllDate >= WEEK_IN_MILLISECONDS) {
+        controllDate = startDate
+        if (sicknessObject != null) {
+          sicknessObjectList.push(sicknessObject)
         }
+        sicknessObject = new this.sicknessObject(sickString, startDate)
+      }
+      if (description.toLowerCase().includes(sickString)) {
+        sicknessObject.count++
       }
     }
   },
   sicknessObject(name, startDate) {
     this.name = name
     this.startDate = startDate
+    this.displayDate = new Date(this.startDate)
     this.count = 0
-  }
+  },
 }
 
 export default pandemicFunctions
