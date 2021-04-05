@@ -11,11 +11,11 @@ const songFunctions = {
       console.error(error)
     }
   },
-  async fetchSongList(event) {
+  async fetchSongList(id) {
     try {
       let resp = await fetch(
         "https://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=" +
-          event.target.value +
+          id +
           "&startdatetime=2021-03-22&format=json&size=500"
       )
       if (!resp.ok) {
