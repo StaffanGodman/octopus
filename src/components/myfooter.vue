@@ -1,8 +1,14 @@
 <template>
-  <div id="container">
-    <button class="homebutton" @click="$router.push('/')"></button>
-    <button class="backbutton" @click="$router.back(-1)"></button>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark color-background position-fixed bottom-0 end-0 start-0 d-md-none m-2">
+    <div class="container-fluid">
+      <a class="navbar-brand" @click="$router.back(-1)"
+        ><i class="bi bi-arrow-left-square-fill" style="font-size: 2rem; color: cornflowerblue;"></i
+      ></a>
+      <router-link to="/">
+        <i class="bi bi-house-door-fill" style="font-size: 2rem; color: cornflowerblue;"></i>
+      </router-link>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -11,31 +17,4 @@ export default {
 }
 </script>
 
-<style scoped>
-#container {
-  background-color: #414141;
-  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  height: 3rem;
-}
-
-.homebutton {
-  float: right;
-  background-image: url("../assets/homeicon.png");
-  background-size: cover;
-  height: 2.5rem;
-  width: 2.5rem;
-  margin: 0.3rem;
-}
-.backbutton {
-  float: left;
-  background-image: url("../assets/backarrow.png");
-  background-size: cover;
-  height: 2.5rem;
-  width: 2.5rem;
-  margin: 0.3rem;
-}
-</style>
+<style scoped></style>

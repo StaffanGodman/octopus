@@ -1,6 +1,8 @@
 import { createApp } from "vue"
 import App from "./App.vue"
 import router from "./router"
+import "bootstrap"
+import "./assets/style/custom.scss"
 
 createApp(App)
   .use(router)

@@ -1,10 +1,12 @@
 <template>
-  <div>
-    <h1>Trafikinytt från p4</h1>
-    <p id="information" v-if="trafficMessages.length === 0">
-      information om trafikstörningar runt om i landet
-    </p>
-    <img alt="Traffic sign" src="../assets/skylt.png" v-if="trafficMessages.length === 0" />
+  <div class="color-background vh-100 container-fluid">
+    <h1 class="color-primary-3 fs-1 p-3">Trafikinytt</h1>
+    <div v-if="trafficMessages.length === 0">
+      <p class="color-primary-1 text-center">
+        Håll koll på vad som händer i trafiken. Välj region nedan för att få uppdateringar och information om
+        trafikstörningar i närheten.
+      </p>
+    </div>
     <br />
     <select name="Region" id="Regions" @change="getTrafficMessages">
       <option value="placeholder">Select an area</option>
@@ -13,8 +15,8 @@
         {{ area.name }}
       </option>
     </select>
-    <div class="messagespace" v-if="trafficMessages.length !== 0">
-      <div class="message" v-for="message in trafficMessages" :key="message">
+    <div class="rounded overflow-scroll m-2 h-50 flex-column" v-if="trafficMessages.length !== 0">
+      <div class="message pb-5" v-for="message in trafficMessages" :key="message">
         <p id="title">{{ message.title }}</p>
         <p id="category">{{ message.subcategory }}</p>
         <br />
@@ -52,9 +54,6 @@ export default {
 </script>
 
 <style>
-img {
-  width: 20rem;
-}
 #Regions {
   width: 15rem;
   height: 2rem;
@@ -63,24 +62,6 @@ img {
 .message {
   border: solid lightblue;
   background-color: aliceblue;
-  padding: 0rem;
-  margin: 0rem;
-}
-.messagespace {
-  height: 25rem;
-  display: flex;
-  flex-direction: column;
-  border: solid 1px rgb(185, 167, 167);
-  margin: 2rem;
-  overflow: scroll;
-}
-#information {
-  margin: 2rem;
-  height: 2rem;
-  border: solid lightblue;
-  background-color: aliceblue;
-  padding: 1rem;
-  margin: 0rem;
 }
 #title {
   color: red;
@@ -104,5 +85,6 @@ img {
   float: left;
   bottom: 0%;
   font-size: small;
+  margin: 0.5rem;
 }
 </style>

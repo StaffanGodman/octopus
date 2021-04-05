@@ -1,10 +1,8 @@
 <template>
-  <div class="home">
-    <img alt="Octopus logo" src="../assets/octologo.png" />
-  </div>
+  <div class="container-fluid vh-100 color-background"></div>
 </template>
 <style scoped>
 img {
-  width: 20rem;
+  width: 15rem;
 }
 </style>
