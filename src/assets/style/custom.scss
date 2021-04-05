@@ -1,5 +1,6 @@
-@use '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
+
 
 /* Main Primary color */
 .color-background {
@@ -20,4 +21,3 @@
 .color-primary-4 {
   color: #007076;
 }
-
