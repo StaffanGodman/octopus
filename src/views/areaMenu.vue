@@ -1,8 +1,8 @@
 <template>
   <div class="color-background vh-100 container-fluid">
     <h1 class="color-primary-3 fs-1 p-3">Trafikinytt</h1>
-    <div class="color-primary-1 text-center">
-      <p id="information" v-if="trafficMessages.length === 0">
+    <div class="color-primary-1 text-center" v-if="trafficMessages.length === 0">
+      <p id="information" >
         Håll koll på vad som händer i trafiken. Välj region nedan för att få uppdateringar och information om
         trafikstörningar i närheten.
       </p>
