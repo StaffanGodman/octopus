@@ -1,15 +1,22 @@
 <template>
-  <sidebar />
-  <div id="nav"><Header /></div>
-  <router-view />
-  <Footer />
+  <Header />
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-md-2">
+        <sidebar />
+      </div>
+      <div class="col-md-10">
+        <router-view />
+      </div>
+    </div>
+    <Footer />
+  </div>
 </template>
 
 <script>
 import Header from "./components/header.vue"
 import Footer from "./components/myfooter.vue"
 import Sidebar from "./components/sidebar.vue"
-
 
 export default {
   name: "app",

@@ -29,6 +29,9 @@
           <li class="nav-item d-md-none">
             <router-link to="/songMenu">Låttoppen</router-link>
           </li>
+          <li class="nav-item d-md-none">
+            <router-link to="/pandemikollen">Pandemikollen</router-link>
+          </li>
           <li class="nav-item d-none d-md-inline mx-1">
             <router-link to="/">Såhär fungerar appen</router-link>
           </li>
