@@ -13,7 +13,7 @@ const pandemicFunctions = {
   },
   async fetchNewsPrograms() {
     try {
-      let resp = await fetch("http://api.sr.se/api/v2/programs/index?programcategoryid=68&pagination=false&format=json")
+      let resp = await fetch("https://api.sr.se/api/v2/programs/index?programcategoryid=68&pagination=false&format=json")
       if (!resp.ok) {
         throw new Error(resp.status)
       }
@@ -26,7 +26,7 @@ const pandemicFunctions = {
   async fetchEpisodes(program) {
     try {
       let resp = await fetch(
-        "http://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&pagination=false&programid=" + program
+        "https://api.sr.se/api/v2/episodes/index?format=json&fromdate=2020-03-01&todate=2021-03-01&pagination=false&programid=" + program
       )
       if (!resp.ok) {
         throw new Error(resp.status)
