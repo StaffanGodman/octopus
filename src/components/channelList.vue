@@ -32,6 +32,7 @@ export default {
     },
     createList(songlist) {
       console.log(songlist)
+      this.list = []
       for (let i = 0; i < songlist.length; i++) {
         let s = { description: songlist[i].description, plays: 1 }
         for (let i = 0; i < this.list.length; i++) {
