@@ -31,13 +31,11 @@ export default {
       this.createList(this.songlist)
     },
     createList(songlist) {
-      console.log(songlist)
       this.list = []
       for (let i = 0; i < songlist.length; i++) {
         let s = { description: songlist[i].description, plays: 1 }
         for (let i = 0; i < this.list.length; i++) {
           if (this.list[i].description === s.description) {
-            console.log("splice")
             s.plays = this.list[i].plays + 1
             this.list.splice(i, 1)
           }
@@ -47,7 +45,6 @@ export default {
       this.list.sort(function(a, b) {
         return b.plays - a.plays
       })
-      console.log(this.list)
     },
   },
   async created() {
