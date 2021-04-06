@@ -6,7 +6,7 @@
 
 <script>
 import Chart from "chart.js"
-import pandemicChartData from '../lib/pandemicChartData'
+import pandemicChartData from "../lib/pandemicChartData.js"
 
 export default {
   name: "LineChart",
