@@ -9,7 +9,7 @@
     </div>
     <br />
     <nav class="change-size p-3 color3-background rounded position-relative start-50 translate-middle-x text-center">
-      <select name="Region" id="Regions" @change="getTrafficMessages">
+      <select class="w-75" name="Region" id="Regions" @change="getTrafficMessages">
         <option value="placeholder">Select an area</option>
         <option value="all">Alla områden</option>
         <option v-for="area in trafficAreas" :key="area.name">
@@ -57,7 +57,6 @@ export default {
 
 <style>
 #Regions {
-  width: 15rem;
   height: 2rem;
   font-size: large;
 }
