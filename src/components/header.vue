@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid m-0 p-0">
-    <nav class="navbar navbar-expand-md navbar-dark change-background p-3">
+    <nav class="navbar navbar-expand-md navbar-dark change-background p-3 color-primary-1">
       <a class="btn d-none d-lg-inline color-primary-1 color-background" @click="$router.push('/')">Hem</a>
       <button
         class="navbar-toggler"
@@ -13,33 +13,59 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <img
-        class="w-25 p-3 position-absolute top-0 start-50 translate-middle-x d-md-none"
-        alt="Octopus logo"
-        src="../assets/octologo.png"
-      />
+      <a @click="$router.push('/')">
+        <img
+          class="w-25 p-3 position-absolute top-0 start-50 translate-middle-x d-md-none"
+          alt="Octopus logo"
+          src="../assets/octologo.png"
+        />
+      </a>
+       <a @click="$router.push('/')">
+        <img
+          class="h-auto p-3 position-absolute top-0 end-0 d-none d-md-inline-block"
+          alt="Octopus logo"
+          src="../assets/octologo-light.png"
+        />
+      </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item d-md-none">
-            <router-link to="/">Home</router-link>
+        <ul class="navbar-nav mb-0 ">
+          <li class="nav-item d-md-none m-1">
+            <router-link class=" link-light" to="/">Home</router-link>
           </li>
-          <li class="nav-item d-md-none">
-            <router-link to="/areaMenu">Trafikinytt</router-link>
+          <li class="nav-item d-md-none m-1">
+            <router-link class=" link-light" to="/areaMenu">Trafikinytt</router-link>
           </li>
-          <li class="nav-item d-md-none">
-            <router-link to="/songMenu">Låttoppen</router-link>
+          <li class="nav-item d-md-none m-1">
+            <router-link class=" link-light" to="/songMenu">Låttoppen</router-link>
           </li>
-          <li class="nav-item d-md-none">
-            <router-link to="/pandemikollen">Pandemikollen</router-link>
+          <li class="nav-item d-md-none m-1">
+            <router-link class=" link-light" to="/pandemikollen">Pandemikollen</router-link>
+          </li>
+          <li class="nav-item dropdown d-md-none">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Mer information
+            </a>
+            <ul class="dropdown-menu p-1" aria-labelledby="navbarDropdownMenuLink">
+              <li><router-link class=" link-dark" to="/">Såhär fungerar appen</router-link></li>
+              <li><router-link class=" link-dark" to="/">Tester/Fakta</router-link></li>
+              <li><router-link class=" link-dark" to="/about">Om oss</router-link></li>
+            </ul>
           </li>
           <li class="nav-item d-none d-md-inline mx-1 ps-4">
-            <router-link to="/">Såhär fungerar appen</router-link>
+            <router-link class=" link-dark" to="/">Såhär fungerar appen</router-link>
           </li>
           <li class="nav-item d-none d-md-inline mx-1 px-4 ">
-            <router-link to="/">Tester/Fakta</router-link>
+            <router-link class=" link-dark" to="/">Tester/Fakta</router-link>
           </li>
           <li class="nav-item mx-auto">
-            <router-link to="/about">Om oss</router-link>
+            <router-link class=" link-dark" to="/about">Om oss</router-link>
           </li>
         </ul>
       </div>
@@ -60,7 +86,7 @@ export default {
 
 @media (min-width: 768px) {
   .change-background {
-    background-color: #ffffff;
+    background-color: #ebebeb;
     border-bottom: solid 0.1rem #2b2727;
   }
 }
