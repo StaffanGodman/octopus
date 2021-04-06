@@ -47,7 +47,6 @@ const pandemicFunctions = {
     let sickString = String(sickness)
     let controllDate = this.formatDateMilliseconds(episodes[0].publishdateutc)
     let sicknessObject = null
-    console.log(controllDate)
     for (const episode of episodes) {
       let description = String(episode.description)
       let startDate = this.formatDateMilliseconds(episode.publishdateutc)
@@ -66,8 +65,23 @@ const pandemicFunctions = {
   sicknessObject(name, startDate) {
     this.name = name
     this.startDate = startDate
-    this.displayDate = new Date(this.startDate)
+    this.displayDate = new Date(this.startDate).toDateString()
     this.count = 0
+  },
+  getSicknesObjectData() {
+    let dataArray = []
+    for (const obj of sicknessObjectList) {
+      dataArray.push(obj.count)
+    }
+    console.log(dataArray)
+    return dataArray
+  },
+  getSicknesObjectDates() {
+    let dateArray = []
+    for (const obj of sicknessObjectList) {
+      dateArray.push(obj.displayDate)
+    }
+    return dateArray
   },
 }
 

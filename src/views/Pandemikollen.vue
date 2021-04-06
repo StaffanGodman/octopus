@@ -30,6 +30,7 @@
 <script>
 import pandemicFunctions from "../lib/pandemicFunctions.js"
 import LineChart from "../components/linechart.vue"
+import pandemicChartData from "../lib/pandemicChartData.js"
 
 
 export default {
@@ -73,9 +74,22 @@ export default {
       } else {
         await pandemicFunctions.parseEpisodes(this.sicknessOfChoice, this.programChoice)
         this.getKeywords
+        this.addChartLabels(pandemicFunctions.getSicknesObjectDates())
+        this.addChartDataset(pandemicFunctions.getSicknesObjectData())
         this.showResults = true
       }
     },
+    addChartLabels(labels) {
+      pandemicChartData.data.labels = labels
+    },
+    addChartDataset(dataset) {
+      pandemicChartData.data.datasets.push({
+        data: dataset,
+        label: "Corona",
+        borderColor: "#3cbf9f",
+        fill: false
+      })
+    }
   },
   async created() {
     await pandemicFunctions.fetchNewsPrograms()
