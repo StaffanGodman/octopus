@@ -21,6 +21,7 @@
     "vue-router": "^4.0.5"
   },
   "devDependencies": {
+    "@types/chart.js": "^2.9.31",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",

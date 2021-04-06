@@ -10,17 +10,25 @@
         </option>
       </select>
       <br /><br />
-      <p>{{ sicknessOfChoice }}</p>
-      <select name="pandemicWords" @change="setSickness">
+      <p>{{ keyword }}</p>
+      <select name="pandemicWords" @change="setKeyword">
+        <option value="placeholder">Välj ett sökord</option>
         <option v-for="word in choiceWords" :key="word" :value="word">
           {{ word }}
         </option>
       </select>
       <br /><br />
-      <button class="submitbutton" @click="parseEpisodes">Hämta data :)</button>
+      <button class="submitbutton" @click="parseEpisodes">Hämta data</button>
     </div>
     <div v-if="showResults">
       <LineChart />
+      <br />
+      <select name="pandemicWords" @change="addAdditionalDataset">
+        <option value="placeholder">Välj ett sökord</option>
+        <option v-for="word in choiceWords" :key="word" :value="word">
+          {{ word }}
+        </option>
+      </select>
       <br />
       <button class="submitbutton" @click="newSearch">Ny sökning</button>
     </div>
@@ -32,7 +40,6 @@ import pandemicFunctions from "../lib/pandemicFunctions.js"
 import LineChart from "../components/linechart.vue"
 import pandemicChartData from "../lib/pandemicChartData.js"
 
-
 export default {
   components: {
     LineChart,
@@ -41,16 +48,19 @@ export default {
     return {
       programChoice: null,
       newsPrograms: [],
-      keywords: [],
-      sicknessOfChoice: null,
+      keyword: null,
       showResults: false,
-      choiceWords: ["corona", "pandemi", "vaccin"],
+      choiceWords: ["corona", "pandemi", "vaccin", "antikroppar", "munskydd", "covid", "smittspridning"],
+      colourSet: ["#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3cbf9f"],
     }
   },
   methods: {
     newSearch() {
-      this.keywords = null
       this.showResults = false
+      pandemicChartData.data.labels.pop()
+      pandemicChartData.data.datasets = []
+      this.programChoice = null
+      this.keyword = null
     },
     async getEpisodes(event) {
       if (event.target.value === "placeholder") {
@@ -62,38 +72,46 @@ export default {
     setProgram(event) {
       this.programChoice = event.target.value
     },
-    setSickness(event) {
-      this.sicknessOfChoice = event.target.value
-    },
-    async getKeywords() {
-      this.keywords = await pandemicFunctions.getKeywords()
-    },
-    async parseEpisodes() {
-      if (this.sicknessOfChoice === null || this.programChoice === null) {
+    setKeyword(event) {
+      if (event.target.value === "placeholder") {
         return
       } else {
-        await pandemicFunctions.parseEpisodes(this.sicknessOfChoice, this.programChoice)
+        this.keyword = event.target.value
+      }
+    },
+    async parseEpisodes() {
+      if (this.keyword === null || this.programChoice === null) {
+        return
+      } else {
+        await pandemicFunctions.parseEpisodes(this.programChoice)
         this.getKeywords
         this.addChartLabels(pandemicFunctions.getSicknesObjectDates())
-        this.addChartDataset(pandemicFunctions.getSicknesObjectData())
+        pandemicChartData.data.datasets.push(this.addChartDataset(this.keyword))
         this.showResults = true
       }
     },
     addChartLabels(labels) {
       pandemicChartData.data.labels = labels
     },
-    addChartDataset(dataset) {
-      pandemicChartData.data.datasets.push({
-        data: dataset,
-        label: "Corona",
-        borderColor: "#3cbf9f",
-        fill: false
-      })
-    }
+    addChartDataset(keyword) {
+      return {
+        data: pandemicFunctions.getSicknesObjectData(keyword),
+        label: keyword,
+        borderColor: this.colourSet.pop(),
+        fill: false,
+      }
+    },
+    addAdditionalDataset(event) {
+      if (event.target.value === "placeholder") {
+        return
+      } else {
+        this.chart.data.datasets.push(this.addChartDataset(event.target.value))
+       this.chart.update()
+      }
+    },
   },
   async created() {
-    await pandemicFunctions.fetchNewsPrograms()
-    this.newsPrograms = await pandemicFunctions.getNewsPrograms()
+    this.newsPrograms = await pandemicFunctions.fetchNewsPrograms()
   },
 }
 </script>
