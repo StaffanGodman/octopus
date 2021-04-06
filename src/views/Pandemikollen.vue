@@ -1,28 +1,38 @@
 <template>
-  <div>
-    <h1>Pandemikollen</h1>
+  <div class="color-background vh-210 container-fluid">
+    <h1 class="color-primary-3 fs-1 p-3 text-center" v-if="!showResults">Pandemikollen</h1>
     <br />
     <div v-if="!showResults">
-      <select name="Programs" id="Regions" @change="setProgram">
-        <option value="placeholder">Välj ett program</option>
-        <option v-for="program in newsPrograms" :value="program.id" :key="program.id">
-          {{ program.name }}
-        </option>
-      </select>
-      <br /><br />
-      <p>{{ keyword }}</p>
-      <select name="pandemicWords" @change="setKeyword">
-        <option value="placeholder">Välj ett sökord</option>
-        <option v-for="word in choiceWords" :key="word" :value="word">
-          {{ word }}
-        </option>
-      </select>
-      <br /><br />
-      <button class="submitbutton" @click="parseEpisodes">Hämta data</button>
+      <p class="color-primary-1 text-center">
+        Ta fram tabeller över hur ofta olika program har tagit upp olika pandemirelaterade ämnen det senaste året.
+      </p>
+      <br />
+      <nav class="change-size p-3 color3-background rounded position-relative start-50 translate-middle-x text-center">
+        <select name="Programs" class="rolldown" @change="setProgram">
+          <option value="placeholder">Välj ett program</option>
+          <option v-for="program in newsPrograms" :value="program.id" :key="program.id">
+            {{ program.name }}
+          </option>
+        </select>
+        <br /><br />
+        <p>{{ keyword }}</p>
+        <select name="pandemicWords" class="rolldown" @change="setKeyword">
+          <option value="placeholder">Välj ett sökord</option>
+          <option v-for="word in choiceWords" :key="word" :value="word">
+            {{ word }}
+          </option>
+        </select>
+        <br /><br />
+        <button class="submitbutton" @click="parseEpisodes">Hämta data</button>
+      </nav>
+      <br />
+      <br />
+      <br />
     </div>
     <div v-if="showResults">
       <LineChart />
       <br />
+      <!--
       <select name="pandemicWords" @change="addAdditionalDataset">
         <option value="placeholder">Välj ett sökord</option>
         <option v-for="word in choiceWords" :key="word" :value="word">
@@ -30,6 +40,7 @@
         </option>
       </select>
       <br />
+      -->
       <button class="submitbutton" @click="newSearch">Ny sökning</button>
     </div>
   </div>
@@ -56,11 +67,13 @@ export default {
   },
   methods: {
     newSearch() {
-      this.showResults = false
+      /*this.showResults = false
       pandemicChartData.data.labels.pop()
       pandemicChartData.data.datasets = []
       this.programChoice = null
-      this.keyword = null
+      this.keyword = null*/
+      location.reload()
+      return false
     },
     async getEpisodes(event) {
       if (event.target.value === "placeholder") {
@@ -106,7 +119,7 @@ export default {
         return
       } else {
         this.chart.data.datasets.push(this.addChartDataset(event.target.value))
-       this.chart.update()
+        this.chart.update()
       }
     },
   },
@@ -117,27 +130,13 @@ export default {
 </script>
 
 <style>
+.rolldown {
+  height: 2rem;
+  font-size: large;
+}
 .message {
   border: solid lightblue;
   background-color: aliceblue;
-  padding: 0rem;
-  margin: 0rem;
-}
-.messagespace {
-  height: 25rem;
-  display: flex;
-  flex-direction: column;
-  border: solid 1px rgb(185, 167, 167);
-  margin: 2rem;
-  overflow: scroll;
-}
-#information {
-  margin: 2rem;
-  height: 2rem;
-  border: solid lightblue;
-  background-color: aliceblue;
-  padding: 1rem;
-  margin: 0rem;
 }
 #title {
   color: red;
@@ -153,8 +152,15 @@ export default {
   top: 0rem;
   margin: 0.2rem;
 }
-#desctription {
+#date {
   float: left;
+  bottom: 0%;
+  font-size: small;
   margin: 0.5rem;
+}
+@media (min-width: 768px) {
+  .change-size {
+    width: 40%;
+  }
 }
 </style>
