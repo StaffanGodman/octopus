@@ -51,7 +51,7 @@ const pandemicFunctions = {
   getSicknesObjectDates() {
     let dateArray = []
     for (const episode of parsedEpisodes) {
-      dateArray.push(episode.date.toDateString())
+      dateArray.push(episode.date.getMonth())
     }
     return dateArray
   },
