@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid m-0 p-0">
     <nav class="navbar navbar-expand-md navbar-dark change-background p-3 color-primary-1">
-      <a class="btn d-none d-lg-inline color-primary-1 color-background" @click="$router.push('/')">Hem</a>
+      <a class="btn d-none d-md-inline color-primary-1 color-background" @click="$router.push('/')">Hem</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -20,9 +20,9 @@
           src="../assets/octologo.png"
         />
       </a>
-       <a @click="$router.push('/')">
+      <a @click="$router.push('/')">
         <img
-          class="p-3 position-absolute top-0 end-0 d-none d-md-inline-block"
+          class="mh-25 p-3 position-absolute top-0 end-0 d-none d-md-inline-block"
           alt="Octopus logo"
           src="../assets/octologo-light.png"
         />
@@ -53,13 +53,13 @@
               Mer information
             </a>
             <ul class="dropdown-menu p-1" aria-labelledby="navbarDropdownMenuLink">
-              <li><router-link class=" link-dark" to="/">Såhär fungerar appen</router-link></li>
+              <li><router-link class=" link-dark" to="/appInfo">Såhär fungerar appen</router-link></li>
               <li><router-link class=" link-dark" to="/">Tester/Fakta</router-link></li>
               <li><router-link class=" link-dark" to="/about">Om oss</router-link></li>
             </ul>
           </li>
           <li class="nav-item d-none d-md-inline mx-1 ps-4">
-            <router-link class=" link-dark" to="/">Såhär fungerar appen</router-link>
+            <router-link class=" link-dark" to="/appInfo">Såhär fungerar appen</router-link>
           </li>
           <li class="nav-item d-none d-md-inline mx-1 px-4 ">
             <router-link class=" link-dark" to="/">Tester/Fakta</router-link>

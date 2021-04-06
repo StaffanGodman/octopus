@@ -29,6 +29,11 @@ const routes = [
     name: "Pandemikollen",
     component: () => import(/* webpackChunkName: "about" */ "../views/Pandemikollen.vue"),
   },
+  {
+    path: "/appInfo",
+    name: "Appinfo",
+    component: () => import(/* webpackChunkName: "about" */ "../views/appInfo.vue"),
+  },
 ]
 
 const router = createRouter({

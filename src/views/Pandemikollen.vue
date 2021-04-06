@@ -85,9 +85,6 @@ export default {
 </script>
 
 <style>
-img {
-  width: 20rem;
-}
 .message {
   border: solid lightblue;
   background-color: aliceblue;
