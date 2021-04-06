@@ -8,15 +8,17 @@
       </p>
     </div>
     <br />
-    <select name="Region" id="Regions" @change="getTrafficMessages">
-      <option value="placeholder">Select an area</option>
-      <option value="all">Alla områden</option>
-      <option v-for="area in trafficAreas" :key="area.name">
-        {{ area.name }}
-      </option>
-    </select>
+    <nav class="change-size p-3 color2-background rounded position-relative start-50 translate-middle-x">
+      <select name="Region" id="Regions" @change="getTrafficMessages">
+        <option value="placeholder">Select an area</option>
+        <option value="all">Alla områden</option>
+        <option v-for="area in trafficAreas" :key="area.name">
+          {{ area.name }}
+        </option>
+      </select>
+    </nav>
     <div class="rounded overflow-scroll m-2 h-50 flex-column" v-if="trafficMessages.length !== 0">
-      <div class="message pb-5" v-for="message in trafficMessages" :key="message">
+      <div class="message pb-5 mb-0" v-for="message in trafficMessages" :key="message">
         <p id="title">{{ message.title }}</p>
         <p id="category">{{ message.subcategory }}</p>
         <br />
@@ -77,14 +79,15 @@ export default {
   top: 0rem;
   margin: 0.2rem;
 }
-#desctription {
-  float: left;
-  margin: 0.5rem;
-}
 #date {
   float: left;
   bottom: 0%;
   font-size: small;
   margin: 0.5rem;
+}
+@media (min-width: 768px) {
+  .change-size {
+    width: 40%;
+  }
 }
 </style>

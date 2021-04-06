@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-dark change-background">
-    <div class="container-fluid">
+  <div class="container-fluid m-0 p-0">
+    <nav class="navbar navbar-expand-md navbar-dark change-background p-3">
       <a class="btn d-none d-lg-inline color-primary-1 color-background" @click="$router.push('/')">Hem</a>
       <button
         class="navbar-toggler"
@@ -32,19 +32,19 @@
           <li class="nav-item d-md-none">
             <router-link to="/pandemikollen">Pandemikollen</router-link>
           </li>
-          <li class="nav-item d-none d-md-inline mx-1">
+          <li class="nav-item d-none d-md-inline mx-1 ps-4">
             <router-link to="/">Såhär fungerar appen</router-link>
           </li>
-          <li class="nav-item d-none d-md-inline mx-1">
+          <li class="nav-item d-none d-md-inline mx-1 px-4 ">
             <router-link to="/">Tester/Fakta</router-link>
           </li>
-          <li class="nav-item mx-1">
+          <li class="nav-item mx-auto">
             <router-link to="/about">Om oss</router-link>
           </li>
         </ul>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </template>
 
 <script>

@@ -1,16 +1,16 @@
 <template>
   <Header />
-  <div class="container-fluid p-0">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
         <sidebar />
       </div>
-      <div class="col-md-10">
+      <div class="col-md-10 p-0">
         <router-view />
       </div>
     </div>
-    <Footer />
   </div>
+  <Footer />
 </template>
 
 <script>
