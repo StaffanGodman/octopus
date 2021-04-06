@@ -1,66 +1,28 @@
 <template>
-  <div>
-    <h1>Låt-Toppen</h1>
-    <br />
-
-    <select name="Kanal" id="Channels" @change="getSongList">
-      <option value="placeholder">Välj kanal</option>
-      <option v-for="channel in channels"  :key="channel.name" v-bind:value="channel.id">
-        {{ channel.name }}
-      </option>
-    </select>
+  <div class="color-background vh-100 container-fluid">
+    <h1 class="text-center color-primary-3 fs-1 p-3" >Låt-Toppen</h1>
+    <p class="color-primary-1 text-center">
+      Sök på Låt-Toppen för att se vilken musik som är populärast på just din radiostation!
+    </p>
     <div>
-      <p v-for="song in songlist" :key="song">
-        {{ song.description }}
-      </p>
-      <br />
+    <channelList></channelList>
     </div>
   </div>
 </template>
 
 <script>
+import ChannelList from "@/components/channelList";
 export default {
+  components: { ChannelList },
   data() {
-    return {
-      channels: [],
-      songlist: [],
-    }
+    return {}
   },
 
   methods: {
-    async getChannels() {
-      try {
-        let resp = await fetch("https://api.sr.se/api/v2/channels?format=json&pagination=false")
-        if (!resp.ok) {
-          throw new Error(resp.status)
-        }
-        let json = await resp.json()
-        this.channels = json.channels
-      } catch (error) {
-        console.error(error)
-      }
-    },
-    async getSongList(event) {
-      try {
-        console.log("value:"+event.target.value)
-        let resp = await fetch(
-          "https://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=" +
-            event.target.value +
-            "&startdatetime=2021-03-22&format=json&size=500"
-        )
-        if (!resp.ok) {
-          throw new Error(resp.status)
-        }
-        let json = await resp.json()
-        console.log(json)
-        this.songlist = json.song
-      } catch (error) {
-        console.error(error)
-      }
-    },
-  },
-  created() {
-    this.getChannels()
   },
 }
 </script>
+
+<style>
+
+</style>

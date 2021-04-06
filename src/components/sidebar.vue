@@ -1,21 +1,29 @@
 <template>
-  <nav class="nav flex-column position-relative top-0 start-0  mt-5 pt-3 vh-100 bg-light d-none d-md-inline">
-    <div class="d-grid gap-3 m-2">
-      <button class="btn btn-primary w-100 p-3 rounded-circle ms-2" type="button" @click="$router.push('/areaMenu')">
-        Trafikinytt
-      </button>
-      <button class="btn btn-primary w-100 p-3 rounded-circle ms-2" type="button" @click="$router.push('/songMenu')">
-        Låttoppen
+  <nav class="nav flex-column position-relative top-0 start-0 min-size bg-light d-none d-md-inline ">
+    <div class="d-grid gap-1">
+      <button
+        class="btn color1-background w-75 p-5 rounded-circle position-relative mt-1"
+        type="button"
+        @click="$router.push('/areaMenu')"
+      >
+        Trafik <br />
+        nytt
       </button>
       <button
-        class="btn btn-primary w-100 p-3 rounded-circle ms-2"
+        class="btn color2-background w-75 p-5 rounded-circle position-relative start-0"
+        type="button"
+        @click="$router.push('/songMenu')"
+      >
+        Låt <br />
+        toppen
+      </button>
+      <button
+        class="btn color3-background w-75 p-5 rounded-circle position-relative start-0"
         type="button"
         @click="$router.push('/pandemikollen')"
       >
-        Pandemikollen
-      </button>
-      <button class="btn btn-primary w-100 p-3 rounded-circle ms-2" type="button" @click="$router.push('/about')">
-        Om oss
+        Pandemi <br />
+        kollen
       </button>
     </div>
   </nav>
@@ -26,3 +34,5 @@ export default {
   name: "sidebar",
 }
 </script>
+
+<style scoped></style>
