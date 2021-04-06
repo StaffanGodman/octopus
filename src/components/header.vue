@@ -22,7 +22,7 @@
       </a>
        <a @click="$router.push('/')">
         <img
-          class="h-auto p-3 position-absolute top-0 end-0 d-none d-md-inline-block"
+          class="p-3 position-absolute top-0 end-0 d-none d-md-inline-block"
           alt="Octopus logo"
           src="../assets/octologo-light.png"
         />
