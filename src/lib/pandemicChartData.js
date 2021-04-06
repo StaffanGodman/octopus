@@ -8,9 +8,15 @@ export const pandemicChartData = {
   options: {
     title: {
       display: true,
-      text: 'World population per region (in millions)'
-    }
-  }
-};
+      text: 'Antal omnämningar per vecka',
+    },
+    scales: {
+      y: {
+        min: 0,
+        max: 7,
+      },
+    },
+  },
+}
 
 export default pandemicChartData;
