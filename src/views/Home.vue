@@ -3,7 +3,6 @@
     <div class="container-fluid pt-2 w-100 p-0 m-0">
       <img class="img-fluid rounded" src="../assets/home-radio.jpg" alt="radio-image" />
     </div>
-
     <div class="d-md-none pt-2">
       <p class="text-center color-primary-1 pt-2 h2 d-md-none">Upptäck innehåll</p>
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
