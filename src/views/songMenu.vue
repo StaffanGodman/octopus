@@ -1,6 +1,6 @@
 <template>
   <div class="color-background vh-100 container-fluid">
-    <h1 class="color-primary-3 fs-1 p-3" >Låt-Toppen</h1>
+    <h1 class="text-center color-primary-3 fs-1 p-3" >Låt-Toppen</h1>
     <p class="color-primary-1 text-center">
       Sök på Låt-Toppen för att se vilken musik som är populärast på just din radiostation!
     </p>

@@ -1,23 +1,24 @@
 <template>
   <div>
-    <p v-if="this.list.length > 0">Topplistan idag i (placeholder)</p>
+
     <br />
     <div>
-    <select name="Kanal" id="Channels" @change="channelChosen">
-      <option value="placeholder">Välj kanal</option>
-      <option v-for="channel in channels" :key="channel.name" v-bind:value="channel.id">
-        {{ channel.name }}
-      </option>
-    </select>
+      <select name="Kanal" id="Channels" @change="channelChosen">
+        <option value="placeholder">Välj kanal</option>
+        <option v-for="channel in channels" :key="channel.name" v-bind:value="channel.id">
+          {{ channel.name }}
+        </option>
+      </select>
     </div>
-    <div class="rounded overflow-scroll m-2 h-50 flex-column" v-if="this.list.length > 0">
-      <p class="bi-text-left colo>Låt</p>
-      <div class="message pb-5" v-for="song in list" :list="list" :key="song">
-        <p id="titleartist">{{ song.description }}</p>
-        <br />
-        <p id="timesplayed">Antal spelningar: {{ song.plays }}</p>
-        <br />
-      </div>
+  </div>
+  <div class="rounded m-2 h-50 flex-column" v-if="this.list.length > 0">
+    <p class="color-primary-1">Topplistan idag för (placeholder)</p>
+    <p class="bi-text-left colo">Låt</p>
+    <div class="message pb-0 mb-0" v-for="song in list" :list="list" :key="song">
+      <p id="titleartist">{{ song.description }}</p>
+      <br />
+      <p id="timesplayed">Antal spelningar: {{ song.plays }}</p>
+      <br />
     </div>
   </div>
 </template>
@@ -29,7 +30,6 @@ export default {
   name: "ChannelList",
   data() {
     return {
-      channelname: "",
       channels: [],
       songlist: [],
       list: [],
@@ -55,6 +55,7 @@ export default {
       this.list.sort(function(a, b) {
         return b.plays - a.plays
       })
+      this.list.length = 5
     },
   },
   async created() {
@@ -76,7 +77,6 @@ export default {
   margin: 0.5rem;
 }
 #timesplayed {
-  float: right;
-  margin: 0.5rem;
+  float: right
 }
 </style>
