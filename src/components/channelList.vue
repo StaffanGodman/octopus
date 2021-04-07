@@ -1,24 +1,21 @@
 <template>
-  <div>
-
-    <br />
-    <div>
-      <select name="Kanal" id="Channels" @change="channelChosen">
-        <option value="placeholder">Välj kanal</option>
-        <option v-for="channel in channels" :key="channel.name" v-bind:value="channel.id">
-          {{ channel.name }}
-        </option>
-      </select>
-    </div>
-  </div>
+  <nav class="change-size p-3 color3-background rounded position-relative start-50 translate-middle-x text-center">
+    <select class="w-75" name="Kanal" id="Channels" @change="channelChosen">
+      <option value="placeholder">Välj kanal</option>
+      <option v-for="channel in channels" :key="channel.name" v-bind:value="channel.id">
+        {{ channel.name }}
+      </option>
+    </select>
+  </nav>
   <div class="rounded m-2 h-50 flex-column" v-if="this.list.length > 0">
-    <p class="color-primary-1">Topplistan idag för (placeholder)</p>
-    <p class="bi-text-left colo">Låt</p>
-    <div class="message pb-0 mb-0" v-for="song in list" :list="list" :key="song">
+    <p class="color-primary-1">Topplistan 2021-04-05 för (placeholder)</p>
+    <div class="d-flex justify-content-between p-0 message pb-6 mb-0" v-for="song in list" :list="list" :key="song">
+      <div class="p-1">
       <p id="titleartist">{{ song.description }}</p>
-      <br />
-      <p id="timesplayed">Antal spelningar: {{ song.plays }}</p>
-      <br />
+      </div>
+      <div class="p-1">
+      <p class="" id="timesplayed">Spelningar: {{ song.plays }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -65,18 +62,25 @@ export default {
 </script>
 <style>
 #Channels {
-  position: relative;
-  margin-bottom: 1rem;
+  height: 2rem;
+  font-size: large;
 }
 .message {
+  font-size: small;
   border: solid lightblue;
   background-color: aliceblue;
 }
 #titleartist {
-  float: left;
-  margin: 0.5rem;
 }
 #timesplayed {
-  float: right
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .change-size {
+    width: 40%;
+  }
+  .message {
+    font-size: large;
+  }
 }
 </style>

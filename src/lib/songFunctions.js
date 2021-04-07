@@ -16,7 +16,7 @@ const songFunctions = {
       let resp = await fetch(
         "https://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=" +
           id +
-          "&startdatetime=2021-03-22&format=json&size=500"
+          "&startdatetime=2021-04-05&format=json&size=500"
       )
       if (!resp.ok) {
         throw new Error(resp.status)
