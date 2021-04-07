@@ -1,14 +1,7 @@
 <template>
   <Header />
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2 light-background">
-        <sidebar />
-      </div>
-      <div class="col-md-10 p-0">
-        <router-view />
-      </div>
-    </div>
+    <router-view />
   </div>
   <Footer />
 </template>
@@ -16,14 +9,12 @@
 <script>
 import Header from "./components/header.vue"
 import Footer from "./components/myfooter.vue"
-import Sidebar from "./components/sidebar.vue"
 
 export default {
   name: "app",
   components: {
     Header,
     Footer,
-    Sidebar,
   },
 }
 </script>

@@ -1,39 +1,52 @@
 <template>
   <div class="color-background vh-100 container-fluid">
-    <h1 class="color-primary-3 fs-1 p-3 text-center">Trafiknytt</h1>
-    <div v-if="trafficMessages.length === 0">
-      <p class="color-primary-1 text-center">
-        Håll koll på vad som händer i trafiken. Välj region nedan för att få uppdateringar och information om
-        trafikstörningar i närheten.
-      </p>
-    </div>
-    <br />
-    <nav class="change-size p-3 color3-background rounded position-relative start-50 translate-middle-x text-center">
-      <select class="w-75" name="Region" id="Regions" @change="getTrafficMessages">
-        <option value="placeholder">Select an area</option>
-        <option value="all">Alla områden</option>
-        <option v-for="area in trafficAreas" :key="area.name">
-          {{ area.name }}
-        </option>
-      </select>
-    </nav>
-    <div class="rounded overflow-scroll m-2 h-50 flex-column" v-if="trafficMessages.length !== 0">
-      <div class="message pb-5 mb-0" v-for="message in trafficMessages" :key="message">
-        <p id="title">{{ message.title }}</p>
-        <p id="category">{{ message.subcategory }}</p>
-        <br />
-        <p class="m-2" id="description">{{ message.description }}</p>
-        <p id="date">{{ formatDate(message.createddate) }}</p>
+    <div class="row justify-content-start">
+      <div class="col-md-2 light-background">
+        <sidebar />
       </div>
-      <br />
+      <div class="col-md-10 p-0">
+        <h1 class="color-primary-3 fs-1 p-3 text-center">Trafiknytt</h1>
+        <div v-if="trafficMessages.length === 0">
+          <p class="color-primary-1 text-center">
+            Håll koll på vad som händer i trafiken. Välj region nedan för att få uppdateringar och information om
+            trafikstörningar i närheten.
+          </p>
+        </div>
+        <br />
+        <nav
+          class="change-size p-3 color3-background rounded position-relative start-50 translate-middle-x text-center"
+        >
+          <select class="w-75" name="Region" id="Regions" @change="getTrafficMessages">
+            <option value="placeholder">Select an area</option>
+            <option value="all">Alla områden</option>
+            <option v-for="area in trafficAreas" :key="area.name">
+              {{ area.name }}
+            </option>
+          </select>
+        </nav>
+        <div class="rounded overflow-scroll m-2 h-50 flex-column" v-if="trafficMessages.length !== 0">
+          <div class="message pb-5 mb-0" v-for="message in trafficMessages" :key="message">
+            <p id="title">{{ message.title }}</p>
+            <p id="category">{{ message.subcategory }}</p>
+            <br />
+            <p class="m-2" id="description">{{ message.description }}</p>
+            <p id="date">{{ formatDate(message.createddate) }}</p>
+          </div>
+          <br />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import trafficFunctions from "../lib/trafficFunctions.js"
+import Sidebar from "../components/sidebar.vue"
 
 export default {
+  components: {
+    Sidebar,
+  },
   data() {
     return {
       trafficMessages: [],

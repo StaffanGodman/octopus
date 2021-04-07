@@ -1,38 +1,45 @@
 <template>
   <div class="color-background vh-100 container-fluid">
-    <h1 class="color-primary-3 fs-1 p-3 text-center" v-if="!showResults">Pandemikollen</h1>
-    <br />
-    <div v-if="!showResults">
-      <p class="color-primary-1 text-center">
-        Ta fram tabeller över hur ofta olika program har tagit upp olika pandemirelaterade ämnen det senaste året.
-      </p>
-      <br />
-      <nav class="change-size p-3 color3-background rounded position-relative start-50 translate-middle-x text-center">
-        <select name="Programs" class="rolldown" @change="setProgram">
-          <option value="placeholder">Välj ett program</option>
-          <option v-for="program in newsPrograms" :value="program.id" :key="program.id">
-            {{ program.name }}
-          </option>
-        </select>
-        <br /><br />
-        <select name="pandemicWords" class="rolldown" @change="setKeyword">
-          <option value="placeholder">Välj ett sökord</option>
-          <option v-for="word in choiceWords" :key="word" :value="word">
-            {{ word }}
-          </option>
-        </select>
-        <br /><br />
-        <button class="submitbutton" @click="parseEpisodes">Hämta data</button>
-      </nav>
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
-    <div v-if="showResults">
-      <LineChart />
-      <br />
-      <!--
+    <div class="row justify-content-start">
+      <div class="col-md-2 light-background">
+        <sidebar />
+      </div>
+      <div class="col-md-10 p-0">
+        <h1 class="color-primary-3 fs-1 p-3 text-center" v-if="!showResults">Pandemikollen</h1>
+        <br />
+        <div v-if="!showResults">
+          <p class="color-primary-1 text-center">
+            Ta fram tabeller över hur ofta olika program har tagit upp olika pandemirelaterade ämnen det senaste året.
+          </p>
+          <br />
+          <nav
+            class="change-size p-3 color3-background rounded position-relative start-50 translate-middle-x text-center"
+          >
+            <select name="Programs" class="rolldown" @change="setProgram">
+              <option value="placeholder">Välj ett program</option>
+              <option v-for="program in newsPrograms" :value="program.id" :key="program.id">
+                {{ program.name }}
+              </option>
+            </select>
+            <br /><br />
+            <select name="pandemicWords" class="rolldown" @change="setKeyword">
+              <option value="placeholder">Välj ett sökord</option>
+              <option v-for="word in choiceWords" :key="word" :value="word">
+                {{ word }}
+              </option>
+            </select>
+            <br /><br />
+            <button class="submitbutton" @click="parseEpisodes">Hämta data</button>
+          </nav>
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+        <div v-if="showResults">
+          <LineChart />
+          <br />
+          <!--
       <select name="pandemicWords" @change="addAdditionalDataset">
         <option value="placeholder">Välj ett sökord</option>
         <option v-for="word in choiceWords" :key="word" :value="word">
@@ -41,13 +48,15 @@
       </select>
       <br />
       -->
-      <button class="submitbutton" @click="newSearch">Ny sökning</button>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+          <button class="submitbutton" @click="newSearch">Ny sökning</button>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -56,10 +65,12 @@
 import pandemicFunctions from "../lib/pandemicFunctions.js"
 import LineChart from "../components/linechart.vue"
 import pandemicChartData from "../lib/pandemicChartData.js"
+import Sidebar from "../components/sidebar.vue"
 
 export default {
   components: {
     LineChart,
+    Sidebar,
   },
   data() {
     return {

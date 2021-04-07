@@ -1,6 +1,50 @@
 <template>
-  <div class="container-fluid vh-100 color-background">
-    <div class="container-fluid pt-2 w-100 p-0 m-0">
+  <div class="container-fluid vh-100 color-background color-background d-none d-md-inline">
+    <h1 class="color-primary-1 text-center p-5  font-monospace">Radiogeneratorn</h1>
+    <div class="row justify-content-start mh-100 px-5 ">
+      <div class="col-md">
+        <div class="card">
+          <img class="card-img-top" src="../assets/cars.png" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Trafiknytt</h5>
+            <p class="card-text">
+              Är du ute på vägarna i Sverige och vill ha de senaste trafiklägesrapporterna? Se efter själv och få den
+              senaste trafikinformationen från P4 i SR.
+            </p>
+            <router-link class="btn btn-primary" to="/areaMenu">Till TrafikNytt</router-link>
+          </div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="card">
+          <img class="card-img-top" src="../assets/headphones.png" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Låttoppen</h5>
+            <p class="card-text">
+              Är du intresserad av musik och vill ta reda på vilka artister och låtar som spelats mest i din region?
+              klicka dig vidare och se efter själv!
+            </p>
+            <router-link class="btn btn-primary" to="/songMenu">Till Låttoppen</router-link>
+          </div>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="card">
+          <img class="card-img-top" src="../assets/corona.png" alt="Card image cap" />
+          <div class="card-body">
+            <h5 class="card-title">Pandemikollen</h5>
+            <p class="card-text">
+              Hur har snacket kring virus, pandemier och smittsamma sjukdomar på radio gått före och efter Covid-19
+              pandemin? Ta reda på och jämför statistik själv!
+            </p>
+           <router-link class="btn btn-primary" to="/pandemikollen">Till Pandemikollen</router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid vh-100 color-background color-background d-md-none">
+    <div class="container-fluid pt-2 w-100 p-0 m-0 d-md-none">
       <img class="img-fluid rounded" src="../assets/home-radio.jpg" alt="radio-image" />
     </div>
     <div class="d-md-none pt-2">
