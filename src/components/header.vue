@@ -64,7 +64,7 @@
           <li class="nav-item d-none d-md-inline mx-1 px-4 ">
             <router-link class=" link-dark" to="/testInfo">Tester/Fakta</router-link>
           </li>
-          <li class="nav-item mx-auto">
+          <li class="nav-item d-none d-md-inline mx-auto">
             <router-link class=" link-dark" to="/about">Om oss</router-link>
           </li>
         </ul>
