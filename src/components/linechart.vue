@@ -6,18 +6,29 @@
 
 <script>
 import Chart from "chart.js"
-import pandemicChartData from '../lib/pandemicChartData'
+import pandemicChartData from "../lib/pandemicChartData.js"
 
 export default {
   name: "LineChart",
   data() {
     return {
       pandemicChartData: pandemicChartData,
+      chart: null,
     }
+  },
+  methods: {
+    initiate(ctx) {
+      this.chart = new Chart(ctx, this.pandemicChartData)
+    },
+    updateChart(data) {
+      this.pandemicChartData.data.datasets.push(data)
+      this.chart.update()
+    },
   },
   mounted() {
     const ctx = document.getElementById("line-chart")
-    new Chart(ctx, this.pandemicChartData)
+    this.initiate(ctx)
+    //new Chart(ctx, this.pandemicChartData)
   },
 }
 </script>
