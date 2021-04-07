@@ -33,7 +33,7 @@
             <router-link class=" link-light" to="/">Home</router-link>
           </li>
           <li class="nav-item d-md-none m-1">
-            <router-link class=" link-light" to="/areaMenu">Trafikinytt</router-link>
+            <router-link class=" link-light" to="/areaMenu">Trafiknytt</router-link>
           </li>
           <li class="nav-item d-md-none m-1">
             <router-link class=" link-light" to="/songMenu">Låttoppen</router-link>

@@ -1,6 +1,6 @@
 <template>
   <div class="color-background vh-100 container-fluid">
-    <h1 class="color-primary-3 fs-1 p-3 text-center">Trafikinytt</h1>
+    <h1 class="color-primary-3 fs-1 p-3 text-center">Trafiknytt</h1>
     <div v-if="trafficMessages.length === 0">
       <p class="color-primary-1 text-center">
         Håll koll på vad som händer i trafiken. Välj region nedan för att få uppdateringar och information om

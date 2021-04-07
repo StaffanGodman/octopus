@@ -1,5 +1,5 @@
 <template>
-  <div class="color-background vh-210 container-fluid">
+  <div class="color-background vh-100 container-fluid">
     <h1 class="color-primary-3 fs-1 p-3 text-center" v-if="!showResults">Pandemikollen</h1>
     <br />
     <div v-if="!showResults">
