@@ -8,7 +8,7 @@
           Är du ute på vägarna i Sverige och vill ha de senaste trafiklägesrapporterna? Se efter själv och få den
           senaste trafikinformationen från P4 i SR.
         </p>
-        <router-link class="btn btn-primary" to="/trafiknytt">Till TrafikNytt</router-link>
+        <router-link class="btn btn-primary" to="/areaMenu">Till TrafikNytt</router-link>
       </div>
     </div>
     <div class="card m-3">
