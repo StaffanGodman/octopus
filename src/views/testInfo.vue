@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid min-size color-background text-center p-3 d-md-flex mb-5">
+  <div class="container-fluid mh-100 color-background text-center p-3 d-md-flex mb-5">
     <div class="card m-3">
       <img src="../assets/cars.png" class="card-img-top" alt="Trafiknytt" />
       <div class="card-body">
