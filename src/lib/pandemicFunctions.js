@@ -19,7 +19,7 @@ const pandemicFunctions = {
     try {
       let resp = await fetch(
         "https://api.sr.se/api/v2/episodes/index?format=json&fromdate=2019-11-01&todate=" +
-          this.todaysDateForApiFetch() +
+          this.dateForApiFetchAndDisplay(new Date()) +
           "&pagination=false&programid=" +
           program
       )
@@ -51,7 +51,7 @@ const pandemicFunctions = {
   getSicknesObjectDates() {
     let dateArray = []
     for (const episode of parsedEpisodes) {
-      dateArray.push(episode.date.getMonth())
+      dateArray.push(this.dateForApiFetchAndDisplay(episode.date))
     }
     return dateArray
   },
@@ -75,10 +75,9 @@ const pandemicFunctions = {
     this.date = new Date(date)
     this.descriptions = []
   },
-  todaysDateForApiFetch() {
-    let today = new Date()
-    console.log(today)
-    return String(`${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`)
+  dateForApiFetchAndDisplay(date) {
+    //let today = date
+    return String(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
   }
 }
 

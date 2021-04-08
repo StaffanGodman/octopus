@@ -2,7 +2,7 @@
   <Header />
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-2 light-background">
         <sidebar />
       </div>
       <div class="col-md-10 p-0">

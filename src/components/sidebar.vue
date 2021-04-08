@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav flex-column position-relative top-0 start-0 min-size bg-light d-none d-md-inline ">
+  <nav class="nav flex-column position-relative top-0 start-0 vh-100 bg-light d-none d-md-inline ">
     <div class="d-grid gap-1">
       <button
         class="btn color1-background w-75 p-5 rounded-circle position-relative mt-1"

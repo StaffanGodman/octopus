@@ -15,7 +15,6 @@
           </option>
         </select>
         <br /><br />
-        <p>{{ keyword }}</p>
         <select name="pandemicWords" class="rolldown" @change="setKeyword">
           <option value="placeholder">Välj ett sökord</option>
           <option v-for="word in choiceWords" :key="word" :value="word">
@@ -25,6 +24,7 @@
         <br /><br />
         <button class="submitbutton" @click="parseEpisodes">Hämta data</button>
       </nav>
+      <br />
       <br />
       <br />
       <br />
@@ -42,6 +42,12 @@
       <br />
       -->
       <button class="submitbutton" @click="newSearch">Ny sökning</button>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   </div>
 </template>
