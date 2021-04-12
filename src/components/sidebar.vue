@@ -4,7 +4,7 @@
   >
     <nav class="nav">
       <button
-        class="btn color1-background mw-100 mh-100 p-5 rounded-circle mx-auto text-start shadow border border-2 border-dark"
+        class="btn color1-background mw-100 mh-100 p-5 rounded-circle mx-auto text-wrap shadow border border-2 border-dark"
         type="button"
         @click="$router.push('/areaMenu')"
       >
@@ -12,7 +12,7 @@
         nytt
       </button>
       <button
-        class="btn color2-background mw-100 p-5 rounded-circle mt-2 mx-auto text-start shadow border border-2 border-dark"
+        class="btn color2-background mw-100 p-5 rounded-circle mt-2 mx-auto text-wrap shadow border border-2 border-dark"
         type="button"
         @click="$router.push('/songMenu')"
       >
@@ -20,7 +20,7 @@
         toppen
       </button>
       <button
-        class="btn color3-background mw-100 p-5 rounded-circle mt-2 mx-auto text-start shadow border border-2 border-dark"
+        class="btn color3-background mw-100 p-5 rounded-circle mt-2 mx-auto text-wrap shadow border border-2 border-dark"
         type="button"
         @click="$router.push('/areaMenu')"
       >

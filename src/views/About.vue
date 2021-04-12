@@ -6,46 +6,46 @@
       API. Resultatet hittar ni i appen i form av de olika testgeneratorerna som visar olika sorters statistik och
       information .
     </div>
-    <div class="container-fluid my-5 p-1 color-primary-1">
-      <img class="float-start" src="../assets/girlboss.png" alt="girlboss" />
+    <div class="container-fluid my-5 color-primary-1">
+      <img class="float-start p-1" src="../assets/girlboss.png" alt="girlboss" />
       <p>
         Sara Ericsson <br />
         Blivande UX designer
       </p>
     </div>
 
-    <div class="container-fluid my-5 p-1 color-primary-1  text-end">
-      <img class="float-end" src="../assets/manboss.png" alt="girlboss" />
+    <div class="container-fluid my-5 color-primary-1  text-end">
+      <img class="float-end  p-1" src="../assets/manboss.png" alt="girlboss" />
       <p>
         Adrian Book <br />
         Blivande JAVA-utvecklare
       </p>
     </div>
-    <div class="container-fluid my-5 p-1 color-primary-1">
-      <img class="float-start" src="../assets/girlboss.png" alt="girlboss" />
+    <div class="container-fluid my-5 color-primary-1">
+      <img class="float-start p-1" src="../assets/girlboss.png" alt="girlboss" />
       <p>
         Fanny Schönenberg <br />
         Blivande UX designer
       </p>
     </div>
 
-    <div class="container-fluid my-5 p-1 color-primary-1  text-end">
-      <img class="float-end" src="../assets/manboss.png" alt="girlboss" />
+    <div class="container-fluid my-5 color-primary-1  text-end">
+      <img class="float-end p-1" src="../assets/manboss.png" alt="girlboss" />
       <p>
         Björn Munthe <br />
         Blivande JAVA-utvecklare
       </p>
     </div>
-    <div class="container-fluid my-5 p-1 color-primary-1">
-      <img class="float-start" src="../assets/manboss.png" alt="girlboss" />
+    <div class="container-fluid my-5 color-primary-1">
+      <img class="float-start p-1" src="../assets/manboss.png" alt="girlboss" />
       <p>
         Rasmus Engström <br />
         Blivande UX designer
       </p>
     </div>
 
-    <div class="container-fluid my-5 p-1 color-primary-1  text-end">
-      <img class="float-end" src="../assets/manboss.png" alt="girlboss" />
+    <div class="container-fluid my-5 color-primary-1  text-end">
+      <img class="float-end p-1" src="../assets/manboss.png" alt="girlboss" />
       <p>
         Staffan Godman <br />
         Blivande JAVA-utvecklare
