@@ -1,32 +1,32 @@
 <template>
-  <div class="container-fluid d-none d-md-inline  border-1 rounded">
-    <nav class="nav position-relative top-0 start-0 ">
-      <div class="d-grid col-0 gap-1 mx-auto">
-        <button
-          class="btn color1-background w-75 p-5  rounded-circle mt-1"
-          type="button"
-          @click="$router.push('/areaMenu')"
-        >
-          Trafik <br />
-          nytt
-        </button>
-        <button
-          class="btn color2-background w-75 p-5 rounded-circle  start-0"
-          type="button"
-          @click="$router.push('/songMenu')"
-        >
-          Låt <br />
-          toppen
-        </button>
-        <button
-          class="btn color3-background w-75 p-5 rounded-circle start-0"
-          type="button"
-          @click="$router.push('/pandemikollen')"
-        >
-          Pandemi <br />
-          kollen
-        </button>
-      </div>
+  <div
+    class="d-none d-md-flex mh-100 border border-3 rounded-top rounded-pill border-light p-2 mx-auto color5-background"
+  >
+    <nav class="nav">
+      <button
+        class="btn color1-background mw-100 mh-100 p-5 rounded-circle mx-auto text-start shadow border border-2 border-dark"
+        type="button"
+        @click="$router.push('/areaMenu')"
+      >
+        Trafik <br />
+        nytt
+      </button>
+      <button
+        class="btn color2-background mw-100 p-5 rounded-circle mt-2 mx-auto text-start shadow border border-2 border-dark"
+        type="button"
+        @click="$router.push('/songMenu')"
+      >
+        Låt <br />
+        toppen
+      </button>
+      <button
+        class="btn color3-background mw-100 p-5 rounded-circle mt-2 mx-auto text-start shadow border border-2 border-dark"
+        type="button"
+        @click="$router.push('/areaMenu')"
+      >
+        Pandemi <br />
+        kollen
+      </button>
     </nav>
   </div>
 </template>

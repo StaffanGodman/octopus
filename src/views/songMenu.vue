@@ -1,7 +1,7 @@
 <template>
   <div class="color-background vh-100 container-fluid">
     <div class="row justify-content-start">
-      <div class="col-md-2 light-background">
+      <div class="col-md-2">
         <sidebar />
       </div>
       <div class="col-md-10 p-0">

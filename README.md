@@ -1,5 +1,11 @@
 # octopus
 
+View the live application at: 
+https://jolly-galileo-5d1ad1.netlify.app/#/
+
+To build and view the application localy run "npm install" and then "npm run serve"
+Default URL will be http://localhost:8080/ if this socket is occupied Vue CLI will
+provide an alternative socket.
 ## Project setup
 ```
 npm install
