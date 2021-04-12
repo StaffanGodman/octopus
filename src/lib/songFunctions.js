@@ -16,7 +16,9 @@ const songFunctions = {
       let resp = await fetch(
         "https://api.sr.se/api/v2/playlists/getplaylistbychannelid?id=" +
           id +
-          "&startdatetime=2021-04-05&format=json&size=500"
+          "&startdatetime=" +
+          this.getDate() +
+          "&format=json&size=500"
       )
       if (!resp.ok) {
         throw new Error(resp.status)
@@ -26,6 +28,14 @@ const songFunctions = {
     } catch (error) {
       console.error(error)
     }
+  },
+  getDate() {
+    let date = new Date()
+    let addZero = ""
+    if (date.getMonth().valueOf() < 10) {
+      addZero = "0"
+    }
+    return date.getFullYear().toString() + "-" + addZero + date.getMonth().toString() + "-" + date.getDate().toString()
   },
 }
 export default songFunctions

@@ -8,13 +8,13 @@
     </select>
   </nav>
   <div class="rounded m-2 h-50 flex-column" v-if="this.list.length > 0">
-    <p class="color-primary-1">Topplistan 2021-04-05 för (placeholder)</p>
+    <p class="color-primary-1">Topplistan idag {{ todaysDate }} </p>
     <div class="d-flex justify-content-between p-0 message pb-6 mb-0" v-for="song in list" :list="list" :key="song">
       <div class="p-1">
-      <p id="titleartist">{{ song.description }}</p>
+        <p id="titleartist">{{ song.description }}</p>
       </div>
       <div class="p-1">
-      <p class="" id="timesplayed">Spelningar: {{ song.plays }}</p>
+        <p class="" id="timesplayed">Spelningar: {{ song.plays }}</p>
       </div>
     </div>
   </div>
@@ -30,6 +30,8 @@ export default {
       channels: [],
       songlist: [],
       list: [],
+      todaysDate: "",
+      chosenChannel: "",
     }
   },
   methods: {
@@ -52,11 +54,18 @@ export default {
       this.list.sort(function(a, b) {
         return b.plays - a.plays
       })
-      this.list.length = 5
+      if (this.list.length < 2) {
+        let s = {description: "Inga låtar spelade", plays: "0"}
+        this.list.push(s)
+      }
+      else {
+        this.list.length = 5
+      }
     },
   },
   async created() {
     this.channels = await songFunctions.fetchChannels()
+    this.todaysDate = songFunctions.getDate()
   },
 }
 </script>
