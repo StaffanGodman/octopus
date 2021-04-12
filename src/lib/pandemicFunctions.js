@@ -1,20 +1,14 @@
+/*
+Set of functions used by Pandemikollen.vue
+
+author Adrian Book
+*/
 const WEEK_IN_MILLISECONDS = 604800000
 const parsedEpisodes = []
-
+const studioEtt = 1637
 
 const pandemicFunctions = {
-  async fetchNewsPrograms() {
-    try {
-      let resp = await fetch("https://api.sr.se/api/v2/programs/index?programcategoryid=68&pagination=false&format=json")
-      if (!resp.ok) {
-        throw new Error(resp.status)
-      }
-      let json = await resp.json()
-      return json.programs
-    } catch (error) {
-      console.error(error)
-    }
-  },
+  //API-fetch-functions
   async fetchEpisodes(program) {
     try {
       let resp = await fetch(
@@ -32,10 +26,8 @@ const pandemicFunctions = {
       console.error(error)
     }
   },
-  formatDateMilliseconds(dateString) {
-    return Number(JSON.stringify(dateString).slice(7, -3))
-  },
-  getSicknesObjectData(keyword) {
+  //data manipulation functions
+  timeChartObjectArray(keyword) {
     let dataArray = []
     for (const episode of parsedEpisodes) {
       let hits = 0
@@ -44,19 +36,31 @@ const pandemicFunctions = {
           hits++
         }
       }
-      dataArray.push(hits)
+      dataArray.push({
+        x: episode.date,
+        y: hits,
+      })
     }
     return dataArray
   },
-  getSicknesObjectDates() {
-    let dateArray = []
+  timeChartLabels() {
+    let labels = []
+    let month = null
     for (const episode of parsedEpisodes) {
-      dateArray.push(this.dateForApiFetchAndDisplay(episode.date))
+      if (month === null) {
+        month = episode.date
+      }
+      if (episode.date.getMonth() != month.getMonth()) {
+        if (month != null) {
+          labels.push(month)
+        }
+        month = episode.date
+      }
     }
-    return dateArray
+    return labels
   },
-  async parseEpisodes(program) {
-    let episodes = await this.fetchEpisodes(program)
+  async parseEpisodes() {
+    let episodes = await this.fetchEpisodes(studioEtt)
     episodes = episodes.reverse()
     let controllDate = this.formatDateMilliseconds(episodes[0].publishdateutc)
     let episodeData = new this.episodeData(controllDate)
@@ -71,14 +75,17 @@ const pandemicFunctions = {
       episodeData.descriptions.push(description)
     }
   },
+  //utility functions
   episodeData(date) {
     this.date = new Date(date)
     this.descriptions = []
   },
   dateForApiFetchAndDisplay(date) {
-    //let today = date
     return String(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`)
-  }
+  },
+  formatDateMilliseconds(dateString) {
+    return Number(JSON.stringify(dateString).slice(7, -3))
+  },
 }
 
 export default pandemicFunctions

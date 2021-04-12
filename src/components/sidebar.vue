@@ -22,7 +22,7 @@
       <button
         class="btn color3-background mw-100 p-5 rounded-circle mt-2 mx-auto text-wrap shadow border border-2 border-dark"
         type="button"
-        @click="$router.push('/areaMenu')"
+        @click="$router.push('/pandemikollen')"
       >
         Pandemi <br />
         kollen

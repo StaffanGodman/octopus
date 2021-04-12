@@ -1,3 +1,8 @@
+<!--
+vue component for displaying data from Pandemikollen.vue as a line chart
+
+author Adrian Book
+-->
 <template>
   <div>
     <canvas id="line-chart"></canvas>
@@ -17,18 +22,10 @@ export default {
     }
   },
   methods: {
-    initiate(ctx) {
-      this.chart = new Chart(ctx, this.pandemicChartData)
-    },
-    updateChart(data) {
-      this.pandemicChartData.data.datasets.push(data)
-      this.chart.update()
-    },
   },
   mounted() {
     const ctx = document.getElementById("line-chart")
-    this.initiate(ctx)
-    //new Chart(ctx, this.pandemicChartData)
+    new Chart(ctx, this.pandemicChartData)
   },
 }
 </script>

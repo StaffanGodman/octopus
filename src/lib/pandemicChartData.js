@@ -1,6 +1,10 @@
+/*
+Data used by linechart.vue component
 
+author Adrian Book
+*/
 export const pandemicChartData = {
-  type: 'line',
+  type: "line",
   data: {
     labels: [],
     datasets: [],
@@ -8,15 +12,26 @@ export const pandemicChartData = {
   options: {
     title: {
       display: true,
-      text: 'Antal omnämningar per vecka',
+      text: "Antal omnämningar per vecka",
     },
     scales: {
-      y: {
-        min: 0,
-        max: 7,
-      },
+      alignToPixels: true,
+      xAxes: [{
+        type: "time",
+        distribution: "linear",
+        ticks: {
+          source: "labels"
+        },
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 7,
+          stepSize: 1,
+        }
+      }],
     },
   },
 }
 
-export default pandemicChartData;
+export default pandemicChartData
